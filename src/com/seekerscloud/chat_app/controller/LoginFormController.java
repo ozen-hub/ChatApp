@@ -2,6 +2,7 @@ package com.seekerscloud.chat_app.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -26,8 +27,11 @@ public class LoginFormController {
             stage.show();*/
             Stage st = (Stage) loginFormContext.getScene().getWindow();
             st.setTitle(txtUserName.getText());
-            st.setScene(new Scene(FXMLLoader.load(
-                    getClass().getResource("../view/ClientForm.fxml"))));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/ClientForm.fxml"));
+            Parent parent = fxmlLoader.load();
+            ClientFormController controller= fxmlLoader.getController();
+            controller.setClientName(txtUserName.getText());
+            st.setScene(new Scene(parent));
         }else{
             new Alert(Alert.AlertType.WARNING, "User name is required!")
                     .show();
