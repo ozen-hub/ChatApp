@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -25,10 +26,14 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <MaterialDesignIconView fill="WHITE" glyphName="POWER" layoutX="460.0" layoutY="27.0" size="25" />
+            <MaterialDesignIconView fill="WHITE" glyphName="POWER" layoutX="460.0" layoutY="27.0" onMouseClicked="#shutdownServerOnClick" size="25">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MaterialDesignIconView>
          </children>
       </AnchorPane>
-      <TextField layoutX="4.0" layoutY="417.0" prefHeight="36.0" prefWidth="466.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtMessageBox" layoutX="4.0" layoutY="417.0" prefHeight="36.0" prefWidth="466.0" style="-fx-background-radius: 20;" />
       <MaterialDesignIconView fill="WHITE" glyphName="SEND" layoutX="475.0" layoutY="444.0" size="25" />
    </children>
 </AnchorPane>
