@@ -81,6 +81,17 @@ public class ClientHandler implements Runnable{
         }
     }
 
+    private void sendToOriginalUser(ClientHandler client, String originalMessage) {
+        try {
+            client.bufferedWriter.write("sender :"+originalMessage);
+            client.bufferedWriter.newLine();
+            client.bufferedWriter.flush();
+            System.out.println();
+        }catch (Exception e){
+            closeAll(this.socket,this.bufferedReader,this.bufferedWriter);
+        }
+    }
+
     public void removeFromTheChat(){
         allClients.remove(this);
         ServerFormController.displayMessageOnLeft(this.username+" has left the chat", vBox);
