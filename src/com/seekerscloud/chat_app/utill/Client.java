@@ -25,7 +25,16 @@ public class Client {
             this.userName=userName;
             this.vBox=vbox;
         }catch (IOException e){
-            // close all
+            closeAll(this.socket, this.bufferedReader,this.bufferedWriter);
+        }
+    }
+    public void closeAll(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){
+        try{
+            if (bufferedReader!=null) bufferedReader.close();
+            if (bufferedWriter!=null) bufferedWriter.close();
+            if (socket!=null) socket.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
