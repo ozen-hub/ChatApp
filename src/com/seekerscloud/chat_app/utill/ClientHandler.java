@@ -1,5 +1,6 @@
 package com.seekerscloud.chat_app.utill;
 
+import com.seekerscloud.chat_app.controller.ServerFormController;
 import javafx.scene.layout.VBox;
 
 import java.io.*;
@@ -43,6 +44,46 @@ public class ClientHandler implements Runnable{
 
     @Override
     public void run() {
+        ServerFormController.displayMessageOnLeft(username+" has joined the chat!", vBox);
+        String msgFromClient;
+        while (socket.isConnected()){
+            try{
+                msgFromClient = bufferedReader.readLine();
+                if (msgFromClient.contains("left")){
+                    removeFromTheChat();
+                }
+                broadcastMessage(msgFromClient);
+            }catch (IOException e){
+                closeAll(this.socket, this.bufferedReader, this.bufferedWriter);
+            }
+        }
+    }
 
+    public void broadcastMessage(String msgBroadcast) {
+        for (ClientHandler client:allClients
+             ) {
+            try{
+                if (!client.username.equals(username)){
+                    client.bufferedWriter.write(msgBroadcast);
+                    client.bufferedWriter.newLine();
+                    client.bufferedWriter.flush();
+                    System.out.println("");
+                }
+                if (client.username.equals(username)){
+                    String[] originalMsg = msgBroadcast.split(":");
+                    if (originalMsg.length==2){
+                        sendToOriginalUser(client,originalMsg[1]);
+                    }
+                }
+            }catch (Exception e){
+                closeAll(this.socket,this.bufferedReader,this.bufferedWriter);
+            }
+        }
+    }
+
+    public void removeFromTheChat(){
+        allClients.remove(this);
+        ServerFormController.displayMessageOnLeft(this.username+" has left the chat", vBox);
+        closeAll(this.socket,this.bufferedReader,this.bufferedWriter);
     }
 }

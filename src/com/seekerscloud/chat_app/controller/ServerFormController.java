@@ -59,6 +59,7 @@ public class ServerFormController {
             textFlow.setPadding(new Insets(5,5,5,10));
             msgText.setFill(Color.WHITE);
             hBox.getChildren().add(textFlow);
+            // vbox_msgs.getChildren().add(hBox);
         }
     }
     public static void displayMessageOnLeft(String messageFromClient, VBox vBox){
@@ -79,6 +80,7 @@ public class ServerFormController {
     }
 
     public void shutdownServerOnClick(MouseEvent mouseEvent) {
-
+        server.closeServerSocket();
+        Platform.exit();
     }
 }
