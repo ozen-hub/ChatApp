@@ -2,6 +2,8 @@ package com.seekerscloud.chat_app.controller;
 
 import com.seekerscloud.chat_app.utill.Client;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -49,8 +51,14 @@ public class ClientFormController {
             }
             }).start();
         //======
-        vbox_msg.heightProperty().addListener((observable, oldValue, newValue) -> {
+       /* vbox_msg.heightProperty().addListener((observable, oldValue, newValue) -> {
             scrollPane.setVvalue((Double) newValue);
+        });*/
+        vbox_msg.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                scrollPane.setVvalue((Double) newValue);
+            }
         });
     }
     public void exitClientOnAction(MouseEvent mouseEvent) {
