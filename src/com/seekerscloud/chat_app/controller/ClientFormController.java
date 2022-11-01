@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -23,12 +24,15 @@ public class ClientFormController {
     public static VBox senderVBox;
     public Client client;
     public ScrollPane scrollPane;
+    public TextField txtMessageBox;
+    public static String userName="";
 
     public void initialize(){
         System.out.println("initialize");
     }
 
     public void setClientName(String name){
+        userName=name;
         new Thread(()->{
             try {
                 senderVBox = vbox_msg;
@@ -83,5 +87,10 @@ public class ClientFormController {
                 vBox.getChildren().add(hBox);
             });
         }
+    }
+
+    public void sendMessageOnAction(MouseEvent mouseEvent) {
+        client.sendMessage(txtMessageBox.getText(), vbox_msg,userName);
+        txtMessageBox.clear();
     }
 }

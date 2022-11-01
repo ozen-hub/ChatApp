@@ -37,7 +37,7 @@
             </children>
         </AnchorPane>
         <TextField fx:id="txtMessageBox" layoutX="4.0" layoutY="417.0" prefHeight="36.0" prefWidth="466.0" style="-fx-background-radius: 20;" />
-        <MaterialDesignIconView fill="WHITE" glyphName="SEND" layoutX="475.0" layoutY="444.0" size="25" />
+        <MaterialDesignIconView fill="WHITE" glyphName="SEND" layoutX="475.0" layoutY="444.0" onMouseClicked="#sendMessageOnAction" size="25" />
       <MaterialDesignIconView glyphName="ATTACHMENT" layoutX="407.0" layoutY="444.0" size="25" />
       <MaterialDesignIconView glyphName="CAMERA" layoutX="438.0" layoutY="444.0" size="25" />
       <MaterialDesignIconView glyphName="EMOTICON" layoutX="11.0" layoutY="444.0" size="25" />

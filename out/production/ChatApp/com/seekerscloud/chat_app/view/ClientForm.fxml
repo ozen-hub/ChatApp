@@ -18,7 +18,7 @@
                 <Image url="@asserts/whats-app-background.jpg" />
             </image>
         </ImageView>
-        <ScrollPane layoutY="44.0" prefHeight="370.0" prefWidth="508.0">
+        <ScrollPane fx:id="scrollPane" layoutY="44.0" prefHeight="370.0" prefWidth="508.0">
          <content>
             <VBox fx:id="vbox_msg" prefHeight="369.0" prefWidth="506.0" />
          </content></ScrollPane>
@@ -37,7 +37,7 @@
             </children>
         </AnchorPane>
         <TextField fx:id="txtMessageBox" layoutX="4.0" layoutY="417.0" prefHeight="36.0" prefWidth="466.0" style="-fx-background-radius: 20;" />
-        <MaterialDesignIconView fill="WHITE" glyphName="SEND" layoutX="475.0" layoutY="444.0" size="25" />
+        <MaterialDesignIconView fill="WHITE" glyphName="SEND" layoutX="475.0" layoutY="444.0" onMouseClicked="#sendMessageOnAction" size="25" />
       <MaterialDesignIconView glyphName="ATTACHMENT" layoutX="407.0" layoutY="444.0" size="25" />
       <MaterialDesignIconView glyphName="CAMERA" layoutX="438.0" layoutY="444.0" size="25" />
       <MaterialDesignIconView glyphName="EMOTICON" layoutX="11.0" layoutY="444.0" size="25" />
