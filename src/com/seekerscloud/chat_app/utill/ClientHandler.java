@@ -27,7 +27,17 @@ public class ClientHandler implements Runnable{
             this.vBox=vBox;
             allClients.add(this);
         }catch (IOException e){
+            closeAll(this.socket, this.bufferedReader,this.bufferedWriter);
+        }
+    }
 
+    public void closeAll(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){
+        try{
+            if (bufferedReader!=null) bufferedReader.close();
+            if (bufferedWriter!=null) bufferedWriter.close();
+            if (socket!=null) socket.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
