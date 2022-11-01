@@ -18,7 +18,7 @@
                 <Image url="@asserts/whats-app-background.jpg" />
             </image>
         </ImageView>
-        <ScrollPane layoutY="44.0" prefHeight="370.0" prefWidth="508.0">
+        <ScrollPane fx:id="scrollPane" layoutY="44.0" prefHeight="370.0" prefWidth="508.0">
          <content>
             <VBox fx:id="vbox_msg" prefHeight="369.0" prefWidth="506.0" />
          </content></ScrollPane>

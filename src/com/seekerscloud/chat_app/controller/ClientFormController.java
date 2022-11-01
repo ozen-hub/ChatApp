@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,10 +20,9 @@ import java.net.Socket;
 public class ClientFormController {
     public VBox vbox_msg;
     public Label lblClient;
-    String clientName;
-
     public static VBox senderVBox;
     public Client client;
+    public ScrollPane scrollPane;
 
     public void initialize(){
         System.out.println("initialize");
@@ -44,11 +44,10 @@ public class ClientFormController {
                 e.printStackTrace();
             }
             }).start();
-
-
-
-        clientName=name;
-        System.out.println(clientName);
+        //======
+        vbox_msg.heightProperty().addListener((observable, oldValue, newValue) -> {
+            scrollPane.setVvalue((Double) newValue);
+        });
     }
     public void exitClientOnAction(MouseEvent mouseEvent) {
     }
