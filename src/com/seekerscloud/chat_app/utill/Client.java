@@ -28,6 +28,25 @@ public class Client {
             closeAll(this.socket, this.bufferedReader,this.bufferedWriter);
         }
     }
+
+    public void listenForMessage(VBox vBox, String userName){
+        new Thread(()->{
+            String msgFromChat=null;
+            String imgFromChat=null;
+            while (socket.isConnected() && !userName.equals("SERVER")){
+                try{
+                    msgFromChat= bufferedReader.readLine();
+                    if (msgFromChat.contains(".jpg") || msgFromChat.contains(".png")){
+                        imgFromChat=msgFromChat;
+                        // img=====>
+                    }
+                }catch (Exception e){
+
+                }
+            }
+        }).start();
+    }
+
     public void closeAll(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){
         try{
             if (bufferedReader!=null) bufferedReader.close();
@@ -37,4 +56,5 @@ public class Client {
             e.printStackTrace();
         }
     }
+
 }

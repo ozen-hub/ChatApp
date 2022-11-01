@@ -1,6 +1,7 @@
 package com.seekerscloud.chat_app.controller;
 
 import com.seekerscloud.chat_app.utill.Client;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
@@ -9,6 +10,7 @@ import java.net.Socket;
 
 public class ClientFormController {
     public VBox vbox_msg;
+    public Label lblClient;
     String clientName;
 
     public static VBox senderVBox;
@@ -22,8 +24,8 @@ public class ClientFormController {
         new Thread(()->{
             try {
                 senderVBox = vbox_msg;
-                // cleint name set
-                client = new Client(new Socket("localhost", 5000),
+                lblClient.setText(name);
+                client = new Client(new Socket("localhost", 8080),
                         name, vbox_msg);
                 System.out.println("Connected to the server");
                 //=================
