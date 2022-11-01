@@ -39,6 +39,16 @@ public class Client {
                     if (msgFromChat.contains(".jpg") || msgFromChat.contains(".png")){
                         imgFromChat=msgFromChat;
                         // img=====>
+                    }else{
+                        String[] strings = msgFromChat.split(":");
+                        String sendersName = strings[0].trim();
+                        if (strings.length==2 || msgFromChat.contains(" has joined") || msgFromChat.contains("left")){
+                            if (sendersName.equals("sender")){
+                                // client form controller  => display ==> static method // right side
+                            }else{
+                                // client from controller ==> display left side
+                            }
+                        }
                     }
                 }catch (Exception e){
 
